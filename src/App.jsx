@@ -1,18 +1,37 @@
+import { useDispatch } from "react-redux"
 import ExpenseList from "./Components/ExpenseList"
+import ExpenseStats from "./Components/ExpenseStats"
+import Header from "./Components/Header/Header"
+import { setExpenseData } from "./redux/features/dataSlice"
+import { useEffect } from "react"
 
 export default function App() {
-  const data = [
-    {name: "Amazon Prime Video", date: "10 April 2024", profit: true, price: 30, key:1},
-    {name: "Netflix", date: "13 May 2024", profit: false, price: 45, key:2},
-    {name: "Grocceries", date: "1 Jan 2024", profit: false, price: 310, key:3},
-    {name: "Snacks", date: "11 Feb 2024", profit: true, price: 3000, key:4},
-  ]
+  const dispatch = useDispatch()
 
+  useEffect(() => {
+    const storedData = localStorage.getItem("expData");
+    if (storedData) {
+      try {
+        const parsedData = JSON.parse(storedData);
+        dispatch(setExpenseData(parsedData));
+      } catch (error) {
+        console.error("Error parsing stored data:", error);
+      }
+    }
+  }, []);
 
   return (
-    <div className="flex flex-col items-center ">
-      <h1>EXPENSE TRACKER</h1>
-      <ExpenseList data={data} />
+    <>
+    <Header />
+    <div className="flex justify-between">
+      <div className="flex flex-col items-left ">
+        <h1>EXPENSE TRACKER</h1>
+        <ExpenseList />
+      </div>
+      <div className="w-[720px]">
+        <ExpenseStats />
+      </div>
     </div>
+    </>
   )
 }
