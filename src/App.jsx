@@ -4,6 +4,7 @@ import ExpenseStats from "./Components/ExpenseStats"
 import Header from "./Components/Header/Header"
 import { setExpenseData } from "./redux/features/dataSlice"
 import { useEffect } from "react"
+import Card from "./Components/Card"
 
 export default function App() {
   const dispatch = useDispatch()
@@ -21,17 +22,22 @@ export default function App() {
   }, []);
 
   return (
-    <>
+    <div className="p-4" >
     <Header />
-    <div className="flex justify-between">
-      <div className="flex flex-col items-left ">
-        <h1>EXPENSE TRACKER</h1>
-        <ExpenseList />
+    <div className="flex flex-col justify-between">
+      <div className="flex gap-4  my-4 " >
+        <Card type="profit" value={1000} title="Profit" />
+        <Card type="expense" value={500} title="Expense" />
+        <Card type="income" value={2000} title="Income" />
+        <Card type="loss" value={300} title="Loss" />
       </div>
-      <div className="w-[720px]">
+      <div className="bg-white mb-4 mx-8 p-4 rounded-3xl">
         <ExpenseStats />
       </div>
+      <div className="px-4">
+        <ExpenseList />
+      </div>
     </div>
-    </>
+    </div>
   )
 }

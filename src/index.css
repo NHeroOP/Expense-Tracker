@@ -2,3 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+.bg-profit {
+  @apply bg-[#321fdb];
+}
+
+.bg-income {
+  @apply bg-[#3399ff];
+}
+
+.bg-expense {
+  @apply bg-[#f9b115];
+}
+
+.bg-loss {
+  @apply bg-[#e55353];
+}

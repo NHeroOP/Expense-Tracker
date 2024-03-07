@@ -8,8 +8,8 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { Bar } from 'react-chartjs-2';  
-import { useSelector } from 'react-redux';
+import { Bar } from 'react-chartjs-2';
+import { useSelector } from 'react-redux';  
 
 ChartJS.register(
   CategoryScale,
@@ -19,6 +19,34 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'top',
+    },
+    title: {
+      display: true,
+      text: 'Expense Stats',
+      font: {
+        size: 24,
+        weight: 900,
+      },
+    },
+  },
+};
+
+
+export default function ExpenseStats() {
+  const expenseData = useSelector((state) => state.expData);
+  const expensesByMonth = groupExpensesByMonth(expenseData);
+  const monthlyData = calculateMonthlyData(expensesByMonth);
+  
+
+  return <Bar options={options} data={monthlyData} />;
+}
+
 
 function groupExpensesByMonth(expenseData) {
   const expensesByMonth = {};
@@ -57,43 +85,4 @@ function calculateMonthlyData(expensesByMonth) {
   }
 
   return monthlyData;
-}
-
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top',
-    },
-    title: {
-      display: true,
-      text: 'Chart.js Bar Chart',
-    },
-  },
-};
-
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Profit',
-      data: labels.map(() => Math.floor(Math.random() * 10)),
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
-    {
-      label: 'Loss',
-      data: labels.map(() => Math.floor(Math.random() * 10)),
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-  ],
-};
-
-export default function ExpenseStats() {
-  const expenseData = useSelector((state) => state.expData);
-  const expensesByMonth = groupExpensesByMonth(expenseData);
-  const monthlyData = calculateMonthlyData(expensesByMonth);
-
-  return <Bar options={options} data={monthlyData} />;
 }

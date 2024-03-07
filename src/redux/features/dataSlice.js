@@ -27,7 +27,7 @@ export const dataSlice = createSlice({
     },
     setExpenseData: (state, action) => {
       state.expData = action.payload
-    }
+    },
   }
 })
 
