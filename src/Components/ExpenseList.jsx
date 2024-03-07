@@ -19,6 +19,11 @@ export default function ExpenseList() {
 
 export function ExpenseItem({ name, date, isIncome, price, id }) {
   const dispatch = useDispatch()
+  const d = new Date(date).toLocaleDateString('en-US', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  })
   
   return (
     <li className="flex items-center gap-4 max-w-[480px] bg-slate-200 p-4 my-4 rounded-2xl">
@@ -26,7 +31,7 @@ export function ExpenseItem({ name, date, isIncome, price, id }) {
   
       <div className="flex flex-col items-left">
         <p>{name}</p>
-        <p>{date}</p>
+        <p>{d}</p>
       </div>
 
       <div className='flex flex-1 justify-end gap-4'>

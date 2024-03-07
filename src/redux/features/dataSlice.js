@@ -12,7 +12,7 @@ export const dataSlice = createSlice({
     addExpenseData: (state, action) => {
       const data = {
         name: action.payload.name,
-        date: "10 April 2024",
+        date: action.payload.date || "no date",
         isIncome: action.payload.isIncome,
         price: action.payload.price,
         id: nanoid(), 
