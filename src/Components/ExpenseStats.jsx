@@ -39,7 +39,7 @@ export const options = {
 
 
 export default function ExpenseStats() {
-  const expenseData = useSelector((state) => state.expData);
+  const expenseData = useSelector((state) => state.expenseData.expData);
   const expensesByMonth = groupExpensesByMonth(expenseData);
   const monthlyData = calculateMonthlyData(expensesByMonth);
   
@@ -71,18 +71,29 @@ function calculateMonthlyData(expensesByMonth) {
 
   for (const month in expensesByMonth) {
     monthlyData.labels.push(new Date(0, month).toLocaleDateString('en-US', { month: 'long' }));
+
     let income = 0;
     let expense = 0;
+
     for (const expenseItem of expensesByMonth[month]) {
       if (expenseItem.isIncome) {
-        income += expenseItem.price;
+        income += Number(expenseItem.price);
       } else {
-        expense += expenseItem.price;
+        expense += Number(expenseItem.price);
       }
     }
+
     monthlyData.datasets[0].data.push(income);
     monthlyData.datasets[1].data.push(expense);
   }
 
+  monthlyData.datasets.forEach((dataset) => {
+    if (dataset.data.some(isNaN)) {
+      console.error('Warning: Some data points in', dataset.label, 'are NaN');
+      dataset.data = dataset.data.map(value => isNaN(value) ? 0 : value);
+    }
+  });
+
   return monthlyData;
 }
+

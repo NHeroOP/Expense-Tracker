@@ -6,15 +6,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeExpenseData } from '../redux/features/dataSlice';
 
 export default function ExpenseList() {
-  const expenseData = useSelector((state) => state.expData)
+  const expenseData = useSelector((state) => state.expenseData.expData)
   
   return (
     <table className="w-full bg-white rounded-3xl shadow-2xl">
       <thead>
-        <tr className="grid grid-cols-12 w-full py-6 rounded-t-2xl font-bold bg-[#f7f7f8]">
+        <tr className="grid grid-cols-12 w-full py-6 rounded-t-2xl font-black text-xl bg-[#f7f7f8]">
           <th className='col-span-2'></th>
           <th className="col-span-4 text-left" >Name</th>
-          <th className="col-span-3 text-left" >Date</th>
+          <th className="col-span-3 text-left" >Type</th>
           <th className="col-span-2" >Price</th>
           <th className="col-span-1 "></th>
         </tr>
@@ -54,14 +54,17 @@ function ExpenseItem({ name, date, isIncome, price, id }) {
   return (
     <tr className="grid grid-cols-12 items-center w-full p-4 transition ease-in-out hover:bg-[#f7f7f8] border-t-[2px] border-[#f7f7f8]">
       <td className="col-span-2">
-        <img src={isIncome ? "./src/assets/profits.png" : "./src/assets/loss.png" } alt="Img" className="h-16 w-16 rounded-full"/>
+        {isIncome ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />}
       </td>
   
       <td className="col-span-4 text-left">
-        <p>{name[0].toUpperCase()}{name.slice(1)}</p>
+        <div>
+          <p className="text-xl font-[600] " >{name[0].toUpperCase()}{name.slice(1)}</p>
+          <p className=" text-md text-black/70" >{d}</p>
+        </div>
       </td>
       <td className="col-span-3 text-left">
-        <p>{d}</p>
+        <p className="font-[500]" >{isIncome ? "Income" : "Expense"} </p>
       </td>
 
       <td className="col-span-2 flex">
@@ -71,14 +74,14 @@ function ExpenseItem({ name, date, isIncome, price, id }) {
         </div>
 
       </td>
-      <td className="col-span-1" >
+      <td className="col-span-1 text-right" >
         <div>
           <button onClick={() => setShowDelModal(true)} >
             <DeleteForeverIcon/>
           </button>          
         </div>
-      </td>
       {showDelModal && <DelModal onClose={onClose} onDel={onDel} />}
+      </td>
     </tr>
   )
 }

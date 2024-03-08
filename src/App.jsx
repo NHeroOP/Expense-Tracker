@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import ExpenseList from "./Components/ExpenseList"
 import ExpenseStats from "./Components/ExpenseStats"
 import { setExpenseData } from "./redux/features/dataSlice"
@@ -7,6 +7,8 @@ import Card from "./Components/Card"
 
 export default function App() {
   const dispatch = useDispatch()
+  const expenseData = useSelector(state => state.expenseData.expData)
+
 
   useEffect(() => {
     const storedData = localStorage.getItem("expData");
@@ -19,6 +21,12 @@ export default function App() {
       }
     }
   }, []);
+
+  useEffect(() => {
+    if (expenseData.length > 0) {
+      localStorage.setItem("expData", JSON.stringify(expenseData));
+    }
+  }, [expenseData]);
 
   return (
     <div className=" max-w-full  flex flex-col justify-between px-4">

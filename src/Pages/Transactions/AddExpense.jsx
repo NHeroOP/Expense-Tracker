@@ -10,7 +10,6 @@ export default function AddExpense() {
   const [price, setPrice] = useState(0)
   const [name, setName] = useState("")
   const dispatch = useDispatch()
-  const expenseData = useSelector((state) => state.expData)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -26,13 +25,6 @@ export default function AddExpense() {
       alert('Please fill in all fields and select a category.');
     }
   }
-
-  useEffect(() => {
-    if (expenseData.length > 0) {
-      localStorage.setItem("expData", JSON.stringify(expenseData));
-    }
-  }, [expenseData]);
-  
   
   return (
     <form onSubmit={handleSubmit} className='flex rounded-md border border-black/30'>
