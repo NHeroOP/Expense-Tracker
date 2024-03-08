@@ -10,13 +10,16 @@ export default function App() {
   const dispatch = useDispatch()
   const expenseData = useSelector(state => state.expenseData.expData)
 
-  const incomeData = expenseData.filter((data) => data.isIncome && data.price)
-  const income = incomeData.map((data) => Number(data.price)).reduce((acc, curVal) => acc + curVal)
+  if (expenseData.length > 0) {
+    const incomeData = expenseData.filter((data) => data?.isIncome && data?.price)
+    const income = incomeData.map((data) => Number(data?.price)).reduce((acc, curVal) => acc + curVal)
+  
+    const expData = expenseData.filter((data) => !data?.isIncome && data?.price)
+    const expense = expData.map((data) => Number(data?.price)).reduce((acc, curVal) => acc + curVal)
+  
+    const final = income - expense
+  }
 
-  const expData = expenseData.filter((data) => !data.isIncome && data.price)
-  const expense = expData.map((data) => Number(data.price)).reduce((acc, curVal) => acc + curVal)
-
-  const final = income - expense
 
 
   useEffect(() => {
