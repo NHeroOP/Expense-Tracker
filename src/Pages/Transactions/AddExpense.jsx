@@ -18,7 +18,7 @@ export default function AddExpense() {
       const isIncome = type === "income" ? true : false
       dispatch(addExpenseData({ name, date, isIncome, price }));
       setName('');
-      setPrice(0);
+      setPrice();
       setType("");
       setDate(dateObj.toISOString().substring(0, 10));
     } else {
