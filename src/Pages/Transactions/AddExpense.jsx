@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { addExpenseData, setExpenseData } from '../../redux/features/dataSlice';
+import { addExpenseData } from '../../redux/features/dataSlice';
 
 export default function AddExpense() {
   const dateObj = new Date()

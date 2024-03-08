@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux"
 import ExpenseList from "./Components/ExpenseList"
 import ExpenseStats from "./Components/ExpenseStats"
-import Header from "./Components/Header/Header"
 import { setExpenseData } from "./redux/features/dataSlice"
 import { useEffect } from "react"
 import Card from "./Components/Card"
@@ -22,9 +21,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="p-4" >
-    <Header />
-    <div className="flex flex-col justify-between">
+    <div className=" max-w-full  flex flex-col justify-between px-4">
       <div className="flex gap-4  my-4 " >
         <Card type="profit" value={1000} title="Profit" />
         <Card type="expense" value={500} title="Expense" />
@@ -37,7 +34,6 @@ export default function App() {
       <div className="px-4">
         <ExpenseList />
       </div>
-    </div>
     </div>
   )
 }
