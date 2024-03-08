@@ -7,25 +7,35 @@ import { removeExpenseData } from '../redux/features/dataSlice';
 
 export default function ExpenseList() {
   const expenseData = useSelector((state) => state.expenseData.expData)
-  
-  return (
-    <table className="w-full bg-white shadow-2xl mb-4">
-      <thead>
-        <tr className="grid grid-cols-12 w-full py-2 font-[600] text-xl bg-gray-300">
-          <th className='col-span-1'></th>
-          <th className="col-span-5 text-left" >Name</th>
-          <th className="col-span-3 text-left" >Type</th>
-          <th className="col-span-2 text-right" >Price</th>
-          <th className="col-span-1 "></th>
-        </tr>
-      </thead>
-      <tbody >
-      {expenseData.map(({name, date, isIncome, price, id}) => {
-        return <ExpenseItem key={id} name={name} date={date} isIncome={isIncome} price={price} id={id} />
-      })}
-      </tbody>
-    </table>
-  )
+  if(expenseData.length > 0) {
+    return(
+      <table className="w-full bg-white shadow-2xl mb-4">
+        <thead>
+          <tr className="grid grid-cols-12 w-full py-2 font-[600] text-xl bg-gray-300">
+            <th className='col-span-1'></th>
+            <th className="col-span-5 text-left" >Name</th>
+            <th className="col-span-3 text-left" >Type</th>
+            <th className="col-span-2 text-right" >Price</th>
+            <th className="col-span-1 "></th>
+          </tr>
+        </thead>
+        <tbody >
+        {expenseData.map(({name, date, isIncome, price, id}) => {
+          return <ExpenseItem key={id} name={name} date={date} isIncome={isIncome} price={price} id={id} />
+        })}
+        </tbody>
+      </table>
+    )
+  } else {
+    console.log("no data");
+    return (
+      <div className="w-full text-center" >
+        <h1 className="text-bold text-2xl">
+          NO DATA
+        </h1>
+      </div>
+    )
+  }
 }
 
 function ExpenseItem({ name, date, isIncome, price, id }) {

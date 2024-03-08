@@ -7,7 +7,7 @@ export default function AddExpense() {
 
   const [type, setType] = useState("")
   const [date, setDate] = useState(dateObj.toISOString().substring(0, 10));
-  const [price, setPrice] = useState(0)
+  const [price, setPrice] = useState()
   const [name, setName] = useState("")
   const dispatch = useDispatch()
 

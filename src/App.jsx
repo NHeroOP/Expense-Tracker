@@ -53,7 +53,7 @@ export default function App() {
       <div className="bg-white mb-4 mx-8 p-4 rounded-3xl">
         <ExpenseStats />
       </div>
-      <div className="px-4 flex flex-col gap-4">
+      <div className="px-4 flex flex-col gap-4 bg-white w-full shadow-2xl py-4 rounded-3xl mb-4">
         <AddExpense />
         <ExpenseList />
       </div>
