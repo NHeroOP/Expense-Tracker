@@ -13,7 +13,7 @@ export default function Header() {
   }
 
   return (
-    <div className="flex justify-start pl-4 mb-4 py-4 sticky top-0 bg-neutral-400">
+    <div className="flex justify-start pl-4 mb-4 py-4 sticky top-0 z-[200] bg-white/50">
       <div className="flex gap-4">
         <button onClick={handleClick} >
           {navOpen ? <CloseIcon /> : <MenuIcon />}
