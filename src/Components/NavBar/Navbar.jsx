@@ -19,23 +19,23 @@ export default function Navbar () {
 export function NavbarOpen() {
   
   return (
-    <div className="bg-[#3c4b64] text-white text-xl basis-[25%] h-[100vh] sticky self-start top-0" >
+    <div className="bg-[#3c4b64] text-white text-xl basis-[20%] h-[100vh] sticky self-start top-0" >
       <h1 className="bg-[#333f53] py-4 w-full pl-8" >Expense Tracker</h1>
       <ul className="flex flex-col gap-4 py-6" >
         <li>
-          <NavLink to={""} className="flex gap-2 ml-6 hover:text-white/80 items-center" >
+          <NavLink to={""} className="flex gap-4 ml-6 hover:text-white/80 items-center" >
             <DashboardIcon />
             <h2>Dashboard</h2>
           </NavLink>
         </li>
         <li>
-          <NavLink to={"/transactions"} className="flex gap-2 ml-6 hover:text-white/80 items-center" >
+          <NavLink to={"/transactions"} className="flex gap-4 ml-6 hover:text-white/80 items-center" >
             <ReceiptIcon /> 
             <h2>Transactions</h2>
           </NavLink>
         </li>
         <li>
-          <NavLink to={"/stats"} className="flex gap-2 ml-6 hover:text-white/80 items-center" >
+          <NavLink to={"/stats"} className="flex gap-4 ml-6 hover:text-white/80 items-center" >
             <InsertChartIcon />
             <h2>Statstics</h2>
           </NavLink>

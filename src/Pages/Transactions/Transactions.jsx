@@ -4,7 +4,7 @@ import AddExpense from './AddExpense'
 
 export default function Transactions() {
   return (
-    <div className="px-6">
+    <div className="px-6 flex flex-col gap-4">
       <AddExpense />
       <div>
         <ExpenseList />
