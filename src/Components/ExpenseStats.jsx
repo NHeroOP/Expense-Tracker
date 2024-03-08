@@ -44,7 +44,7 @@ export default function ExpenseStats() {
   const monthlyData = calculateMonthlyData(expensesByMonth);
   
 
-  return <Bar options={options} data={monthlyData} />;
+  return <Bar options={options} data={monthlyData} className="max-w-full" />;
 }
 
 

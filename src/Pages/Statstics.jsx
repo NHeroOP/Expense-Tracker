@@ -3,7 +3,7 @@ import ExpenseStats from '../Components/ExpenseStats'
 
 export default function Statstics() {
   return (
-    <div>
+    <div className="flex max-w-full flex-col px-4 py-2 items-center justify-center" >
       <ExpenseStats />
     </div>
   )
