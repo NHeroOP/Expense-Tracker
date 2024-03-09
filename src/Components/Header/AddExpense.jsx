@@ -35,7 +35,7 @@ export default function AddExpense() {
   
   
   return (
-    <form onSubmit={handleSubmit} className='flex rounded-md border border-black/30'>
+    <form onSubmit={handleSubmit} className='flex flex-col md:flex-row rounded-md border border-black/30'>
       <input
         className="w-full border-r border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
         type="text"
@@ -66,10 +66,8 @@ export default function AddExpense() {
         <option value="expense">Expense</option>
       </select>
       <button type="submit" className="h-10 px-3 py-2 bg-slate-800 text-neutral-300 hover:bg-slate-700 active:bg-slate-900">
-        ADD
+        <p>ADD EXPENSE</p>
       </button>
     </form>
   )
 }
-
-
