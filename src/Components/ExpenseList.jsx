@@ -27,7 +27,6 @@ export default function ExpenseList() {
       </table>
     )
   } else {
-    console.log("no data");
     return (
       <div className="w-full text-center" >
         <h1 className="text-bold text-2xl">

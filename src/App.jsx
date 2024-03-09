@@ -43,14 +43,14 @@ export default function App() {
   }, [expenseData]);
 
   return (
-    <div className=" max-w-full  flex flex-col justify-between px-4">
-      <div className="flex gap-4  my-4 " >
-        <Card type="profit" value={final > 0 ? final : "N/A"} title="Profit" />
+    <div className=" max-w-full flex flex-col justify-between px-8">
+      <div className=" grid md:grid-cols-4 md:grid-rows-none grid-rows-4 gap-4  my-4 " >
+        <Card type="profit" value={final > 0 ? final : "N/A"} title="Profit" className=" col-span-1"/>
         <Card type="expense" value={expense ? expense : "N/A"} title="Expense" />
         <Card type="income" value={income ? income : "N/A"} title="Income" />
         <Card type="loss" value={final < 0 ? final : "N/A"} title="Loss" />
       </div>
-      <div className="bg-white mb-4 mx-8 p-4 rounded-3xl">
+      <div className="bg-white mb-4 p-4 rounded-3xl">
         <ExpenseStats />
       </div>
       <div className="px-4 flex flex-col gap-4 bg-white w-full shadow-2xl py-4 rounded-3xl mb-4">
