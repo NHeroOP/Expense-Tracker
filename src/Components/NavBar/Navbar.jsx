@@ -19,8 +19,9 @@ export default function Navbar () {
 export function NavbarOpen() {
   
   return (
-    <div className="bg-[#3c4b64] text-white text-xl basis-[20%] h-[100vh] sticky self-start top-0" >
-      <h1 className="bg-[#333f53] py-4 w-full pl-8" >Expense Tracker</h1>
+    <>
+    <div className="bg-[#3c4b64] w-[30vh] hidden md:block text-white text-xl h-[100vh] sticky self-start top-0" >
+      <h1 className="bg-[#333f53] py-4 w-full pl-8 h-[64px]" >Expense Tracker</h1>
       <ul className="flex flex-col gap-4 py-6" >
         <li>
           <NavLink to={""} className="flex gap-4 ml-6 hover:text-white/80 items-center" >
@@ -42,13 +43,16 @@ export function NavbarOpen() {
         </li>
       </ul>
     </div>
+
+    <NavbarClose className="md:hidden" />
+    </>
   )
 }
 
-export function NavbarClose() {
+export function NavbarClose({className = ""}) {
   return (
-    <div className="bg-[#3c4b64] text-white text-xl basis-[5%] h-[100vh] sticky self-start top-0" >
-      <h1 className="bg-[#333f53] py-4 w-full pl-8" ></h1>
+    <div className={`${className} bg-[#3c4b64] text-white text-xl w-[10%] h-[100vh] sticky self-start top-0`} >
+      <h1 className="bg-[#333f53] py-4 w-full pl-8 h-[64px]" ></h1>
       <ul className="flex flex-col gap-4 py-6 justify-center items-center" >
         <li>
           <NavLink to={""} className="hover:text-white/80" >
