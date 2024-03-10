@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/transactions", "destination": "./src/Pages/Transactions/Transactions.jsx" },
+    { "source" : "/stats", "destination": "./src/Pages/Statistics.jsx" }
+  ]
+}
