@@ -11,9 +11,12 @@ export const pagesSlice = createSlice({
   reducers: {
     toggleNav: (state=initialState, action) => {
       state.navOpen = !state.navOpen
+    },
+    setNavState: (state, action) => {
+      state.navOpen = action.payload
     }
   }
 })
 
-export const {toggleNav} = pagesSlice.actions
+export const {toggleNav, setNavState} = pagesSlice.actions
 export default pagesSlice.reducer

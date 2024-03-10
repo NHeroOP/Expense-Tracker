@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addExpenseData } from '../../redux/features/dataSlice';
+import "./Expense.css"
 
 export default function AddExpense() {
   const dateObj = new Date()
@@ -27,9 +28,9 @@ export default function AddExpense() {
   }
   
   return (
-    <form onSubmit={handleSubmit} className='flex rounded-md border border-black/30'>
+    <form onSubmit={handleSubmit} className='flex flex-col lg:flex-row rounded-md border border-black/30'>
       <input
-        className="w-full border-r border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+        className="exp-input"
         type="text"
         placeholder="Description"
         value={name}
@@ -37,7 +38,7 @@ export default function AddExpense() {
         required
         />
       <input
-        className="w-full border-r border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+        className="exp-input"
         type="number"
         placeholder="Price"
         value={price}
@@ -45,14 +46,14 @@ export default function AddExpense() {
         required
       />
       <input
-        className="w-full border-r border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+        className="exp-input"
         type="date"
         placeholder="Date"
         value={date}
         onChange={(e) => setDate(e.target.value)}
         required
       />
-      <select value={type} className='w-full border-r border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50' onChange={(e) => setType(e.target.value)}>
+      <select value={type} className="exp-input"onChange={(e) => setType(e.target.value)}>
         <option value="" defaultValue>--Select--</option>
         <option value="income">Income</option>
         <option value="expense">Expense</option>

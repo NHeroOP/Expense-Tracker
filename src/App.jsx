@@ -44,7 +44,7 @@ export default function App() {
 
   return (
     <div className=" max-w-full flex flex-col justify-between px-8">
-      <div className=" grid md:grid-cols-4 md:grid-rows-none sm:grid-cols-2 sm:grid-rows-2 grid-rows-4 gap-4  my-4 " >
+      <div className=" grid lg:grid-cols-4 lg:grid-rows-none sm:grid-cols-2 sm:grid-rows-2 grid-rows-4 gap-4  my-4 " >
         <Card type="profit" value={final > 0 ? final : "N/A"} title="Profit" className=" col-span-1"/>
         <Card type="expense" value={expense ? expense : "N/A"} title="Expense" />
         <Card type="income" value={income ? income : "N/A"} title="Income" />

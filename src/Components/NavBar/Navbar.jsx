@@ -1,26 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import InsertChartIcon from '@mui/icons-material/InsertChart';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
+import { setNavState } from '../../redux/features/pagesSlice';
 
 
 export default function Navbar () {
+  const dispatch = useDispatch()
   const {navOpen} = useSelector(state => state.navState)
+  const isMd = useMediaQuery({
+    query: '(max-width: 768px)'
+  })
+
+  useEffect(() => {
+    if (isMd) dispatch(setNavState(false))
+    else dispatch(setNavState(true))
+  }, [isMd])
+
 
   return (
-    <>
-      {navOpen ? <NavbarOpen /> : <NavbarClose />}
-    </>
-  );
-}
-
-export function NavbarOpen() {
-  
-  return (
-    <>
-    <div className="bg-[#3c4b64] w-[30vh] hidden md:block text-white text-xl h-[100vh] sticky self-start top-0" >
+    <div className={`bg-[#3c4b64] ${navOpen && !isMd ? '' : 'hidden'} text-white text-xl fixed top-0 left-0 w-[12rem] h-full transition-all ease-in-out delay-100`} >
       <h1 className="bg-[#333f53] py-4 w-full pl-8 h-[64px]" >Expense Tracker</h1>
       <ul className="flex flex-col gap-4 py-6" >
         <li>
@@ -43,33 +45,5 @@ export function NavbarOpen() {
         </li>
       </ul>
     </div>
-
-    <NavbarClose className="md:hidden" />
-    </>
-  )
-}
-
-export function NavbarClose({className = ""}) {
-  return (
-    <div className={`${className} bg-[#3c4b64] text-white text-xl w-[10%] h-[100vh] sticky self-start top-0`} >
-      <h1 className="bg-[#333f53] py-4 w-full pl-8 h-[64px]" ></h1>
-      <ul className="flex flex-col gap-4 py-6 justify-center items-center" >
-        <li>
-          <NavLink to={""} className="hover:text-white/80" >
-            <DashboardIcon />
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to={"/transactions"} className="hover:text-white/80" >
-            <ReceiptIcon /> 
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to={"/stats"} className="hover:text-white/80" >
-            <InsertChartIcon />
-          </NavLink>
-        </li>
-      </ul>
-    </div>
-  )
+  );
 }
