@@ -18,12 +18,14 @@ export default function Navbar () {
   useEffect(() => {
     if (isMd) dispatch(setNavState(false))
     else dispatch(setNavState(true))
+    console.log(navOpen);
+    console.log(isMd);
   }, [isMd])
 
 
   return (
-    <div className={`bg-[#3c4b64] ${navOpen && !isMd ? '' : 'hidden'} text-white text-xl fixed top-0 left-0 w-[12rem] h-full transition-all ease-in-out delay-100`} >
-      <h1 className="bg-[#333f53] py-4 w-full pl-8 h-[64px]" >Expense Tracker</h1>
+    <div className={`bg-[#3c4b64]/90 md:bg-[#3c4b64] ${!navOpen && "hidden"}  ${!navOpen && isMd ? "hidden" : ""} text-white text-xl fixed top-0 left-0 w-[12rem] h-full transition-all ease-in-out delay-100`} >
+      <h1 className="bg-[#333f53]/90 md:bg-[#333f53] py-4 w-full pl-8 h-[64px]" >Expense Tracker</h1>
       <ul className="flex flex-col gap-4 py-6" >
         <li>
           <NavLink to={""} className="flex gap-4 ml-6 hover:text-white/80 items-center" >

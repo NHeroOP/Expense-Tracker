@@ -25,6 +25,7 @@ export const options = {
   plugins: {
     legend: {
       position: 'top',
+      usePointStyle: true,
     },
     title: {
       display: true,
@@ -44,7 +45,7 @@ export default function ExpenseStats() {
   const monthlyData = calculateMonthlyData(expensesByMonth);
   
 
-  return <Bar options={options} data={monthlyData} className="max-w-full min-h-[320px]" />;
+  return <Bar options={options} data={monthlyData} />;
 }
 
 
@@ -64,7 +65,7 @@ function calculateMonthlyData(expensesByMonth) {
   const monthlyData = {
     labels: [],
     datasets: [
-      { label: 'Income', data: [], backgroundColor: 'rgba(53, 162, 235, 0.5)' },
+      { label: 'Income', data: [], backgroundColor: 'rgba(53, 162, 235, 0.5)', },
       { label: 'Expense', data: [], backgroundColor: 'rgba(255, 99, 132, 0.5)' },
     ],
   };
