@@ -10,7 +10,7 @@ export default function Layout() {
   return (
     <div className="flex max-w-full" >
       <Navbar />
-      <div className={`flex flex-col w-full ${navOpen ? "md:ml-[12rem]" : ""} `} >
+      <div className={` overflow-hidden flex flex-col flex-1 max-w-full ${navOpen ? "md:ml-[12rem]" : ""} `} >
         <Header />
         <Outlet />
       </div>
