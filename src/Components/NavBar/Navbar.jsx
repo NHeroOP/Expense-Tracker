@@ -18,8 +18,6 @@ export default function Navbar () {
   useEffect(() => {
     if (isMd) dispatch(setNavState(false))
     else dispatch(setNavState(true))
-    console.log(navOpen);
-    console.log(isMd);
   }, [isMd])
 
 
